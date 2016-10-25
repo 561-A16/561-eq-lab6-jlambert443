@@ -1,3 +1,4 @@
-#!bin/bash
+#!/bin/bash
+set -e
 dotnet restore
-#dotnet test
+dotnet test ./webapp.unittests
