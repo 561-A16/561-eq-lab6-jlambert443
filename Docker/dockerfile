@@ -6,8 +6,13 @@
 FROM ymazieres/dotnet:compile
 WORKDIR /src
 ENV ASPNETCORE_URLS http://+:5000
-
-EXPOSE 5000
 COPY /src /src
-RUN dotnet restore
-ENTRYPOINT ["dotnet", "run"]
+EXPOSE 5000
+
+#RUN ["dotnet", "restore"]
+#WORKDIR /src/webapp.unittests
+#RUN ["dotnet", "test"]
+
+COPY /docker/run.sh /script/run.sh
+RUN chmod +x ../../script/run.sh
+CMD ["sh", "../../script/run.sh"]
